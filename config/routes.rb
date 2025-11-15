@@ -1,14 +1,50 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+class QuotesController < ApplicationController
+  before_action :set_quote, only: [ :show, :edit, :update, :destroy ]
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  def index
+    @quotes = Quote.all
+  end
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  def show
+  end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  def new
+    @quote = Quote.new
+  end
+
+  def create
+    @quote = Quote.new(quote_params)
+
+    if @quote.save
+      redirect_to quotes_path, notice: "Quote was successfully created."
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @quote.update(quote_params)
+      redirect_to quotes_path, notice: "Quote was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @quote.destroy
+    redirect_to quotes_path, notice: "Quote was successfully destroyed."
+  end
+
+  private
+
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  def quote_params
+    params.require(:quote).permit(:name)
+  end
 end
