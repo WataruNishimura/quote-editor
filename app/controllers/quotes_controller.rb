@@ -1,4 +1,15 @@
 class QuotesController < ApplicationController
+  def index
+    @quotes = Quote.all
+  end
+
+  def show
+  end
+
+  def new
+    @quote = Quote.new
+  end
+
   def create
     @quote = Quote.new(quote_params)
 
@@ -10,6 +21,8 @@ class QuotesController < ApplicationController
     end
   end
 
+  def edit
+  end
 
   def update
     if @quote.update(quote_params)
@@ -18,5 +31,20 @@ class QuotesController < ApplicationController
       # Add `status: :unprocessable_entity` here
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @quote.destroy
+    redirect_to quotes_path, notice: "Quote was successfully destroyed."
+  end
+
+  private
+
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  def quote_params
+    params.require(:quote).permit(:name)
   end
 end
