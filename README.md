@@ -1,24 +1,16 @@
-# README
+# Hotrails Tutorial Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I tried Hotwire with [Hotrails](https://www.hotrails.dev/turbo-rails).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Status
+- [-] Chapter 1
+- [-] Chapter 2
+- [-] Chapter 3
+- [-] Chapter 4
+- [ ] Chapter 5
+- [ ] Chapter 6
+- [ ] Chapter 7
+- [ ] Chapter 8
+- [ ] Chapter 9
+- [ ] Chapter 10
+- [ ] Chapter 11
