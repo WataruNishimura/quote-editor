@@ -2,7 +2,9 @@
   <%= link_to sanitize("&larr; Back to quotes"), quotes_path %>
   <div class="header">
     <h1>
-      <%= @quote.name %>
+      <% if @quote %>
+        <%= @quote.name %>
+      <% end %>
     </h1>
   </div>
 </main>
